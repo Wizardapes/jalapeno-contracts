@@ -25,11 +25,16 @@ const main = async () => {
   const ninjaChef = await deploy("NinjaChef", [jalapenoToken.address, deployerWalletAddress, deployerWalletAddress, oneJlp, blockNumber])
   await jalapenoToken.transferOwnership(ninjaChef.address, {from: deployerWalletAddress});
 
+  const delaySeconds = 2;
+
+  const timeLock = await deploy("Timelock", [deployerWalletAddress, delaySeconds])
+  await ninjaChef.transferOwnership(timeLock.address, {from: deployerWalletAddress});
+
 
   console.log(
-    " 💾  Artifacts (address, abi, and args) saved to: ",
-    chalk.blue("packages/hardhat/artifacts/"),
-    "\n\n"
+      " 💾  Artifacts (address, abi, and args) saved to: ",
+      chalk.blue("packages/hardhat/artifacts/"),
+      "\n\n"
   );
 };
 
@@ -49,11 +54,11 @@ const deploy = async (contractName, _args = [], overrides = {}, libraries = {}) 
   }
 
   console.log(
-    " 📄",
-    chalk.cyan(contractName),
-    "deployed to:",
-    chalk.magenta(deployed.address),
-    chalk.grey(extraGasInfo)
+      " 📄",
+      chalk.cyan(contractName),
+      "deployed to:",
+      chalk.magenta(deployed.address),
+      chalk.grey(extraGasInfo)
   );
 
   if (!encoded || encoded.length <= 2) return deployed;
@@ -71,22 +76,22 @@ const deploy = async (contractName, _args = [], overrides = {}, libraries = {}) 
 const abiEncodeArgs = (deployed, contractArgs) => {
   // not writing abi encoded args if this does not pass
   if (
-    !contractArgs ||
-    !deployed ||
-    !R.hasPath(["interface", "deploy"], deployed)
+      !contractArgs ||
+      !deployed ||
+      !R.hasPath(["interface", "deploy"], deployed)
   ) {
     return "";
   }
   const encoded = utils.defaultAbiCoder.encode(
-    deployed.interface.deploy.inputs,
-    contractArgs
+      deployed.interface.deploy.inputs,
+      contractArgs
   );
   return encoded;
 };
 
 // checks if it is a Solidity file
 const isSolidity = (fileName) =>
-  fileName.indexOf(".sol") >= 0 && fileName.indexOf(".swp") < 0 && fileName.indexOf(".swap") < 0;
+    fileName.indexOf(".sol") >= 0 && fileName.indexOf(".swp") < 0 && fileName.indexOf(".swap") < 0;
 
 const readArgsFile = (contractName) => {
   let args = [];
@@ -105,8 +110,8 @@ function sleep(ms) {
 }
 
 main()
-  .then(() => process.exit(0))
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
-  });
+    .then(() => process.exit(0))
+    .catch((error) => {
+      console.error(error);
+      process.exit(1);
+    });
