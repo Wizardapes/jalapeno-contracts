@@ -33,6 +33,8 @@
     "deployLpTokens": "hardhat run scripts/deployLpTokens.js",
     "addFarms": "hardhat run scripts/addFarms.js",
     "addFarmsWithTimelock": "hardhat run scripts/addFarmsWithTimelock.js",
+    "getFarmInfos": "hardhat run scripts/getFarmInfos.js",
+    "deployMulticall": "hardhat run scripts/deployMulticall.js",
     "watch": "node scripts/watch.js",
     "accounts": "hardhat accounts",
     "balance": "hardhat balance",

@@ -5,36 +5,15 @@ const { config, ethers } = require("hardhat");
 const { utils } = require("ethers");
 const R = require("ramda");
 
+const getBlockNumber = async (provider) => {
+    return await provider.getBlockNumber();
+}
 
 const main = async () => {
 
-    console.log("\n\n 📡 Deploying LP Mocks...\n");
+    console.log("\n\n 📡 Deploying...\n");
 
-    const hunderedUnits = utils.parseEther("100");
-
-
-    // BFI/JPL
-    // BFI/BZB
-    // BFI/UXB
-    // BFI/BNB
-    // BFI/BUSD
-    // JPL/BUSD
-    // JPL/BNB
-    //
-    // BFI
-    // JPL
-    const BFI = await deploy("MockBEP20", ["BFI token", "BFI", hunderedUnits])
-
-    const BFI_JLP = await deploy("MockBEP20", ["BFI/JLP LP token", "BFI/JLP", hunderedUnits])
-    const BFI_BZB = await deploy("MockBEP20", ["BFI/BZB LP token", "BFI/BZB", hunderedUnits])
-    const BFI_UXB = await deploy("MockBEP20", ["BFI/UXB LP token", "BFI/UXB", hunderedUnits])
-    const BFI_BNB = await deploy("MockBEP20", ["BFI/BNB LP token", "BFI/BNB", hunderedUnits])
-    const BFI_BUSD = await deploy("MockBEP20", ["BFI/BUSD LP token", "BFI/BUSD", hunderedUnits])
-    const BFI_OXB = await deploy("MockBEP20", ["BFI/OXB LP token", "BFI/OXB", hunderedUnits])
-
-    const JLP_BUSD = await deploy("MockBEP20", ["JLP/BUSD LP token", "JLP/BUSD", hunderedUnits])
-    const JLP_BNB = await deploy("MockBEP20", ["JLP/BNB LP token", "JLP/BNB", hunderedUnits])
-
+    const multicall = await deploy("MulticallContract")
 
     console.log(
         " 💾  Artifacts (address, abi, and args) saved to: ",

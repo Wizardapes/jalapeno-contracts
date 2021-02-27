@@ -3,7 +3,7 @@ pragma solidity 0.6.12;
 import "./libs/BEP20.sol";
 
 // JAP with Governance.
-contract JalapenoToken is BEP20('Jalapenos', 'JAP') {
+contract JalapenoToken is BEP20('Jalapenos', 'JLP') {
 
     constructor() public {
         _mint(msg.sender, 1e18);
