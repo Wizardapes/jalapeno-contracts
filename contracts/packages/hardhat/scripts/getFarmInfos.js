@@ -23,7 +23,10 @@ const getFarmInfos = async (ninjaChefAddress) => {
     const ninjaChefFactory = await ethers.getContractFactory("NinjaChef");
     const ninjaChef = await ninjaChefFactory.attach(ninjaChefAddress);
 
-    for (let i = 0; i < 10; i++) {
+    const poolLength = (await ninjaChef.poolLength()).toNumber();
+    console.log("POOL LENGTH", poolLength);
+
+    for (let i = 0; i < poolLength; i++) {
         const getFarm =  await ninjaChef.poolInfo(i);
         console.log("POOL INFO", i ,getFarm);
     }

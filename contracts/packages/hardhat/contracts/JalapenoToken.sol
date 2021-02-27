@@ -2,18 +2,35 @@ pragma solidity 0.6.12;
 
 import "./libs/BEP20.sol";
 
-// JAP with Governance.
-contract JalapenoToken is BEP20('Jalapenos', 'JLP') {
+// JLP with Governance.
+contract JalapenoToken is BEP20 {
 
-    constructor() public {
-        _mint(msg.sender, 1e18);
+    uint256 public DECIMAL_MULTIPLIER = 10**18;
+    uint256 private _cap;
+    uint256 private _initialMintAmount;
+
+    constructor() public BEP20('Jalapenos', 'JLP') {
+        _cap = 10000000 * DECIMAL_MULTIPLIER; // 10,000,000 tokens
+        _initialMintAmount = 160000 * DECIMAL_MULTIPLIER; // 160,000 tokens, 100k for presale, 60k for listing
+        _mint(msg.sender, _initialMintAmount);
     }
+
+    /**
+     * @dev Returns the cap on the token's total supply.
+     */
+    function cap() public view virtual returns (uint256) {
+        return _cap;
+    }
+
+
 
     /// @notice Creates `_amount` token to `_to`. Must only be called by the owner (NinjaChef).
     function mint(address _to, uint256 _amount) public onlyOwner {
+        require(BEP20.totalSupply() + _amount <= cap(), "BEP20Capped: cap exceeded");
         _mint(_to, _amount);
         _moveDelegates(address(0), _delegates[_to], _amount);
     }
+
 
     // Copied and modified from YAM code:
     // https://github.com/yam-finance/yam-protocol/blob/master/contracts/token/YAMGovernanceStorage.sol

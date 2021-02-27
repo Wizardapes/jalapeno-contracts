@@ -99,7 +99,7 @@ contract NinjaChef is Ownable {
         }));
     }
 
-    // Update the given pool's JWP allocation point and deposit fee. Can only be called by the owner.
+    // Update the given pool's allocation point and deposit fee. Can only be called by the owner.
     function set(uint256 _pid, uint256 _allocPoint, uint16 _depositFeeBP, bool _withUpdate) public onlyOwner {
         require(_depositFeeBP <= 10000, "set: invalid deposit fee basis points");
         if (_withUpdate) {

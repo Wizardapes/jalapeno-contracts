@@ -10,30 +10,20 @@ const main = async () => {
 
     console.log("\n\n 📡 Deploying LP Mocks...\n");
 
-    const hunderedUnits = utils.parseEther("100");
+    const hundredThousandUnits = utils.parseEther("100000");
 
+    const BFI = await deploy("MockBEP20", ["BFI token", "BFI", hundredThousandUnits])
+    const BUSD = await deploy("MockBEP20", ["BUSD token", "BUSD", hundredThousandUnits])
+    const DAI = await deploy("MockBEP20", ["DAI token", "DAI", hundredThousandUnits])
+    const BNB = await deploy("MockBEP20", ["BNB token", "BNB", hundredThousandUnits])
 
-    // BFI/JPL
-    // BFI/BZB
-    // BFI/UXB
-    // BFI/BNB
-    // BFI/BUSD
-    // JPL/BUSD
-    // JPL/BNB
-    //
-    // BFI
-    // JPL
-    const BFI = await deploy("MockBEP20", ["BFI token", "BFI", hunderedUnits])
+    const BFI_JLP = await deploy("MockBEP20", ["BFI/JLP LP token", "BFI/JLP", hundredThousandUnits])
+    const BFI_BZB = await deploy("MockBEP20", ["BFI/BZB LP token", "BFI/BZB", hundredThousandUnits])
+    const BFI_BNB = await deploy("MockBEP20", ["BFI/BNB LP token", "BFI/BNB", hundredThousandUnits])
+    const BFI_BUSD = await deploy("MockBEP20", ["BFI/BUSD LP token", "BFI/BUSD", hundredThousandUnits])
 
-    const BFI_JLP = await deploy("MockBEP20", ["BFI/JLP LP token", "BFI/JLP", hunderedUnits])
-    const BFI_BZB = await deploy("MockBEP20", ["BFI/BZB LP token", "BFI/BZB", hunderedUnits])
-    const BFI_UXB = await deploy("MockBEP20", ["BFI/UXB LP token", "BFI/UXB", hunderedUnits])
-    const BFI_BNB = await deploy("MockBEP20", ["BFI/BNB LP token", "BFI/BNB", hunderedUnits])
-    const BFI_BUSD = await deploy("MockBEP20", ["BFI/BUSD LP token", "BFI/BUSD", hunderedUnits])
-    const BFI_OXB = await deploy("MockBEP20", ["BFI/OXB LP token", "BFI/OXB", hunderedUnits])
-
-    const JLP_BUSD = await deploy("MockBEP20", ["JLP/BUSD LP token", "JLP/BUSD", hunderedUnits])
-    const JLP_BNB = await deploy("MockBEP20", ["JLP/BNB LP token", "JLP/BNB", hunderedUnits])
+    const JLP_BUSD = await deploy("MockBEP20", ["JLP/BUSD LP token", "JLP/BUSD", hundredThousandUnits])
+    const JLP_BNB = await deploy("MockBEP20", ["JLP/BNB LP token", "JLP/BNB", hundredThousandUnits])
 
 
     console.log(
