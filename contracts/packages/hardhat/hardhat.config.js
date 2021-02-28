@@ -18,7 +18,7 @@ const { isAddress, getAddress, formatUnits, parseUnits } = utils;
 //
 // Select the network you want to deploy to here:
 //
-const defaultNetwork = "localhost";
+const defaultNetwork = "bscTestnet";
 
 function mnemonic() {
   try {
@@ -87,6 +87,12 @@ module.exports = {
     matic: {
       url: 'https://rpc-mainnet.maticvigil.com/',
       gasPrice: 1000000000,
+      accounts: {
+        mnemonic: mnemonic(),
+      },
+    },
+    bscTestnet: {
+      url: 'https://data-seed-prebsc-2-s3.binance.org:8545/',
       accounts: {
         mnemonic: mnemonic(),
       },

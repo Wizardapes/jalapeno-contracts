@@ -18,8 +18,8 @@ const main = async () => {
   const deployerWallet = ethers.provider.getSigner()
   const deployerWalletAddress = await deployerWallet.getAddress()
 
-  // tokenContractAddress, account.address, account.address, saltPerBlock, 6347879x§
-  const oneJlp = utils.parseEther("1")
+  // tokenContractAddress, account.address, account.address, saltPerBlock, 6347879x
+  const oneJlp = utils.parseEther("1.1")
   const blockNumber = await getBlockNumber(ethers.provider);
 
   const ninjaChef = await deploy("NinjaChef", [jalapenoToken.address, deployerWalletAddress, deployerWalletAddress, oneJlp, blockNumber])

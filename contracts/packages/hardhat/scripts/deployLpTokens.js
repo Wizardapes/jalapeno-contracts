@@ -12,10 +12,11 @@ const main = async () => {
 
     const hundredThousandUnits = utils.parseEther("100000");
 
-    const BFI = await deploy("MockBEP20", ["BFI token", "BFI", hundredThousandUnits])
-    const BUSD = await deploy("MockBEP20", ["BUSD token", "BUSD", hundredThousandUnits])
-    const DAI = await deploy("MockBEP20", ["DAI token", "DAI", hundredThousandUnits])
-    const BNB = await deploy("MockBEP20", ["BNB token", "BNB", hundredThousandUnits])
+    const BFI = await deploy("MockBEP20", ["BFI dummy token", "BFI", hundredThousandUnits])
+    const BUSD = await deploy("MockBEP20", ["BUSD dummy token", "BUSD", hundredThousandUnits])
+    const DAI = await deploy("MockBEP20", ["DAI dummy token", "DAI", hundredThousandUnits])
+    // const BNB = await deploy("MockBEP20", ["BNB token", "BNB", hundredThousandUnits])
+    const BZB = await deploy("MockBEP20", ["BZB dummy token", "BZB", hundredThousandUnits])
 
     const BFI_JLP = await deploy("MockBEP20", ["BFI/JLP LP token", "BFI/JLP", hundredThousandUnits])
     const BFI_BZB = await deploy("MockBEP20", ["BFI/BZB LP token", "BFI/BZB", hundredThousandUnits])
@@ -24,6 +25,10 @@ const main = async () => {
 
     const JLP_BUSD = await deploy("MockBEP20", ["JLP/BUSD LP token", "JLP/BUSD", hundredThousandUnits])
     const JLP_BNB = await deploy("MockBEP20", ["JLP/BNB LP token", "JLP/BNB", hundredThousandUnits])
+
+
+    const BNB_BUSD = await deploy("MockBEP20", ["BNB/BUSD LP token", "BNB/BUSD", hundredThousandUnits])
+    const DAI_BUSD = await deploy("MockBEP20", ["DAI/BUSD LP token", "DAI/BUSD", hundredThousandUnits])
 
 
     console.log(
