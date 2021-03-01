@@ -10,7 +10,7 @@ contract JalapenoToken is BEP20 {
     uint256 private _initialMintAmount;
 
     // TODO: Change token name
-    constructor() public BEP20('DummiesJP', 'DUMMYJP') {
+    constructor() public BEP20('Jalapeno', 'JLP') {
         _cap = 10000000 * DECIMAL_MULTIPLIER; // 10,000,000 tokens
         _initialMintAmount = 160000 * DECIMAL_MULTIPLIER; // 160,000 tokens, 100k for presale, 60k for listing
         _mint(msg.sender, _initialMintAmount);
