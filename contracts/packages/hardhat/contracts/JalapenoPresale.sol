@@ -20,8 +20,8 @@ contract JalapenoPresale is Ownable {
     // Start time 03/01/2021 @ 9:00pm (GMT) //
     uint256 public constant PRESALE_START_TIME = 1614632400;
 
-    // Start time 03/03/2021 @ 9:00pm (GMT) //
-    uint256 public constant PRESALE_END_TIME = 1614805200;
+    // Start time 03/02/2021 @ 9:00pm (GMT) //
+    uint256 public constant PRESALE_END_TIME = 1614715200;
 
     uint256 public constant DECIMAL_MULTIPLIER = 10**18;
 
@@ -101,8 +101,9 @@ contract JalapenoPresale is Ownable {
         // Check if we will sell more than the PRESALE_CAP
         require(jalapenosSold.add(_getTokenAmount(msg.value)) <= PRESALE_CAP, "JalapenoPresale: the presale amount is reached.");
 
-        require(msg.value >= MIN_CONTRIBUTION, "JalapenoPresale: minimum contribution is 1");
-        require(_walletContributions[msg.sender].add(msg.value) <= MAX_CONTRIBUTION, "JalapenoPresale: You cannot buy more than 15 BNB worth of tokens.");
+        uint256 userContribution = _walletContributions[msg.sender].add(msg.value);
+        require(userContribution >= MIN_CONTRIBUTION, "JalapenoPresale: minimum contribution is 1 BNB.");
+        require(userContribution <= MAX_CONTRIBUTION, "JalapenoPresale: You cannot buy more than 15 BNB worth of tokens.");
 
         // Validations passed, buy tokens
         _buyTokens(msg.sender, msg.value);
@@ -195,7 +196,7 @@ contract JalapenoPresale is Ownable {
 
     // CONTROL FUNCTIONS
 
-    // Is the sale open now?
+    // The presale is open if the transaction made is within the time interval
     function isOpen() public view returns (bool) {
         return now >= PRESALE_START_TIME && now <= PRESALE_END_TIME;
     }

@@ -29,6 +29,8 @@
     "test": "hardhat test --network hardhat",
     "compile": "hardhat compile",
     "deploy": "hardhat run scripts/deploy.js",
+    "deployJalapenoToken": "hardhat run scripts/deployJalapenoToken.js",
+    "deployPresale": "hardhat run scripts/deployPresale.js",
     "deployWithTimelock": "hardhat run scripts/deployWithTimelock.js",
     "deployLpTokens": "hardhat run scripts/deployLpTokens.js",
     "addFarms": "hardhat run scripts/addFarms.js",

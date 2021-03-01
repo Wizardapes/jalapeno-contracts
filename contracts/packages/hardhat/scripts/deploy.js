@@ -18,7 +18,6 @@ const main = async () => {
   const deployerWallet = ethers.provider.getSigner()
   const deployerWalletAddress = await deployerWallet.getAddress()
 
-  // tokenContractAddress, account.address, account.address, saltPerBlock, 6347879x
   const oneJlp = utils.parseEther("1")
   const blockNumber = await getBlockNumber(ethers.provider);
 

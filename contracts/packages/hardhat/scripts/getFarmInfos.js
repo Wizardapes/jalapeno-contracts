@@ -39,7 +39,7 @@ const getFarmInfos = async (ninjaChefAddress) => {
 const main = async () => {
 
     console.log("\n\n 📡 Getting farm infos...\n");
-    await getFarmInfos("0x42ca74022266C92F3Eb72Fd0bFcccA7b61eb57f5")
+    await getFarmInfos("0x66270210e291B22849b57ef3C443068fF3Df442c")
 };
 
 main()
