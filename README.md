@@ -1,4 +1,4 @@
-# jalapeno-contracts
+# Jalapeno.finance contracts
 Smart contracts for jalapeno finance. 
 
 Instructions:

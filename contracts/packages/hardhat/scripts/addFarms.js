@@ -27,8 +27,6 @@ const addFarm = async (ninjaChefAddress, lpTokenAddress, allocPoints, depositFee
     const deployerWalletAddress = await deployerWallet.getAddress();
 
     const res = await ninjaChef.add(allocPoints, lpTokenAddress, depositFee, withUpdate, {from: deployerWalletAddress})
-    console.log("Farm added!")
-
 };
 
 

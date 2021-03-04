@@ -24,7 +24,6 @@ const getFarmInfos = async (ninjaChefAddress) => {
     const ninjaChef = await ninjaChefFactory.attach(ninjaChefAddress);
 
     const poolLength = (await ninjaChef.poolLength()).toNumber();
-    console.log("POOL LENGTH", poolLength);
 
     for (let i = 0; i < poolLength; i++) {
         const getFarm =  await ninjaChef.poolInfo(i);

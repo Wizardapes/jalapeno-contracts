@@ -294,26 +294,13 @@ describe("Test jalapeno presale", function () {
 
             await jalapenoPresaleInstance1.claimTokens({from: account1.address});
             const jlpBalanceOf = await jalapenoTokenInstance.balanceOf(account1.address);
-            console.log(jlpBalanceOf.toString())
             expect (jlpBalanceOf).to.be.equal(amount('10000'));
 
 
             const balance = (await ethers.provider.getBalance(jalapenoPresaleInstance9.address)).toString();
-            console.log("BALANCE", balance);
 
             const balance1 = (await ethers.provider.getBalance(account0.address));
-            console.log("BALANCE1", balance1.toString());
             await jalapenoPresaleInstance.takeOutFundingRaised({from: account0.address});
-            //
-            const balance2 = (await ethers.provider.getBalance(account0.address));
-            // expect (balance2).to.be.equal(balance1.plus(amount('100')));
-            console.log("BALANCE2", balance2.toString());
-            console.log("BALANCE3", (balance2.add(balance1).toString()));
-
-
-
-
-
 
         });
 
